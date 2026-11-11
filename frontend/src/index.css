@@ -4,35 +4,63 @@
 
 @layer base {
   :root {
-    --color-primary: 59 130 246;
+    --color-primary: 37 99 235;
     --color-secondary: 16 185 129;
     --color-danger: 239 68 68;
+    --color-brand: #2563eb;
+    --color-surface-light: #ffffff;
+    --color-surface-dark: #0f172a;
+    --color-border-light: #e2e8f0;
+    --color-border-dark: #1e293b;
   }
 
   body {
-    @apply bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100 transition-colors duration-200;
+    @apply bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100 transition-colors duration-200 font-sans;
+  }
+
+  /* Custom smooth scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 dark:bg-slate-700 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-400 dark:bg-slate-600;
+  }
+
+  /* Custom text selection */
+  ::selection {
+    @apply bg-blue-600 text-white dark:bg-blue-500 dark:text-slate-900;
   }
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium text-sm transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95;
+    @apply inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl font-medium text-sm transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-[0.98];
   }
 
   .btn-primary {
-    @apply btn bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/20 hover:from-blue-700 hover:to-indigo-700 focus:ring-blue-500;
+    @apply btn bg-blue-600 hover:bg-blue-700 text-white shadow-sm hover:shadow focus:ring-blue-500 active:bg-blue-800;
   }
 
   .btn-secondary {
-    @apply btn bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md shadow-emerald-500/20 hover:from-emerald-700 hover:to-teal-700 focus:ring-emerald-500;
+    @apply btn bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm hover:shadow focus:ring-emerald-500 active:bg-emerald-800;
   }
 
   .btn-danger {
-    @apply btn bg-rose-600 text-white hover:bg-rose-700 focus:ring-rose-500;
+    @apply btn bg-rose-600 hover:bg-rose-700 text-white shadow-sm hover:shadow focus:ring-rose-500;
   }
 
   .btn-outline {
-    @apply btn border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 focus:ring-blue-500;
+    @apply btn border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700/80 focus:ring-blue-500;
   }
 
   .btn-ghost {
@@ -40,7 +68,7 @@
   }
 
   .input {
-    @apply w-full px-3.5 py-2.5 border border-slate-300 dark:border-slate-700 rounded-xl text-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500 disabled:bg-slate-100 dark:disabled:bg-slate-900 disabled:cursor-not-allowed;
+    @apply w-full px-3.5 py-2.5 border border-slate-300 dark:border-slate-700 rounded-xl text-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/80 focus:border-blue-500 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500 disabled:bg-slate-100 dark:disabled:bg-slate-900 disabled:cursor-not-allowed;
   }
 
   .input-error {
@@ -56,7 +84,7 @@
   }
 
   .card-glass {
-    @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-2xl shadow-lg border border-slate-200/60 dark:border-slate-800/60 p-6;
+    @apply bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800/80 p-6;
   }
 
   .badge {

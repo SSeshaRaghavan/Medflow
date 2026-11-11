@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { ProtectedRoute, PublicRoute } from './components/ProtectedRoute';
 import OfflineBanner from './components/OfflineBanner';
@@ -72,7 +72,8 @@ export default function App() {
           />
 
           <Route path="/unauthorized" element={<UnauthorizedPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/403" element={<UnauthorizedPage />} />
+          <Route path="*" element={<UnauthorizedPage isNotFound={true} />} />
         </Routes>
       </Suspense>
     </AuthProvider>

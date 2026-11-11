@@ -48,6 +48,12 @@ class Appointment(models.Model):
                 name='unique_queue_slot_per_doctor_per_day',
             )
         ]
+        indexes = [
+            models.Index(fields=['scheduled_date', 'status'], name='appt_date_status_idx'),
+            models.Index(fields=['doctor', 'scheduled_date'], name='appt_doc_date_idx'),
+            models.Index(fields=['patient', 'scheduled_date'], name='appt_pat_date_idx'),
+            models.Index(fields=['status'], name='appt_status_idx'),
+        ]
 
     def __str__(self):
         return f'Appt #{self.queue_number} — {self.patient.get_full_name()} with Dr. {self.doctor.get_full_name()}'
