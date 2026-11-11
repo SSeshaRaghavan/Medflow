@@ -1,0 +1,21 @@
+[Unit]
+Description=MEDFLOW Django Gunicorn Application Server
+After=network.target postgresql.service redis.service
+
+[Service]
+Type=notify
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/medflow/backend
+EnvironmentFile=/var/www/medflow/backend/.env
+ExecStart=/var/www/medflow/backend/venv/bin/gunicorn --config gunicorn_conf.py medflow.wsgi:application
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
+
