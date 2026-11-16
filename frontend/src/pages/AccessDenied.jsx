@@ -54,3 +54,4 @@ export default function AccessDenied({ isNotFound = false }) {
     </div>
   );
 }
+
